@@ -1,0 +1,6407 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coverse | Yangi avlod platformasi</title>
+
+<meta name="description" content="Coverse — odamlar, g‘oyalar va ta’limni bir joyga jamlovchi zamonaviy platforma.">
+<link rel="canonical" href="https://coverse.com/">
+<meta property="og:title" content="Coverse | Yangi avlod platformasi">
+<meta property="og:description" content="Coverse — odamlar, g‘oyalar va ta’limni bir joyga jamlovchi zamonaviy platforma.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1221">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    min-height:100%;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080d18;
+    color:#fff;
+    transition:.25s;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+textarea{
+    width:100%;
+    resize:vertical;
+    min-height:110px;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #2a3958;
+    background:#0a1120;
+    color:#fff;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    background:
+        radial-gradient(circle at top, rgba(110,161,255,.25), transparent 30%),
+        linear-gradient(135deg, #07141f 0%, #0d1d32 46%, #050a11 100%);
+}
+
+.login-box{
+    width:430px;
+    max-width:100%;
+    padding:34px 28px 28px;
+    background:rgba(15,25,40,.88);
+    border:1px solid rgba(147,173,255,.18);
+    border-radius:26px;
+    box-shadow:0 26px 80px rgba(0,0,0,.48);
+    backdrop-filter:blur(6px);
+}
+
+.logo{
+    text-align:center;
+    color:#8fb1ff;
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:0.08em;
+    margin-bottom:8px;
+}
+
+.login-sub{
+    text-align:center;
+    color:#b9c7e0;
+    margin-bottom:28px;
+    font-size:15px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+
+    font-size:14px;
+
+    color:#aebbd0;
+
+    margin-bottom:7px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+
+    padding:14px;
+
+    outline:none;
+
+    border-radius:12px;
+
+    border:1px solid #2a3958;
+
+    background:#0a1120;
+
+    color:#fff;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#638fff;
+}
+
+.login-btn{
+    width:100%;
+
+    border:0;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:#527dff;
+
+    color:#fff;
+
+    font-weight:800;
+
+    margin-top:5px;
+}
+
+.public-entry-box{
+    margin-top:22px;
+
+    background:rgba(17,24,39,.8);
+
+    border:1px solid #2b3a58;
+
+    border-radius:18px;
+
+    padding:18px;
+}
+
+.public-entry-title{
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#dfe8ff;
+
+    margin-bottom:10px;
+}
+
+.public-entry-item{
+    padding:12px 14px;
+
+    border-radius:10px;
+
+    background:#101b2f;
+
+    border:1px solid #243456;
+
+    color:#e7ebf4;
+
+    margin-top:10px;
+}
+
+.public-entry-item small{
+    display:block;
+
+    color:#94a3b8;
+
+    margin-top:4px;
+}
+
+.empty-entry{
+    margin-top:10px;
+
+    padding:12px;
+
+    border:1px dashed #3a4d71;
+
+    border-radius:10px;
+
+    color:#94a3b8;
+
+    background:rgba(15,23,42,.25);
+}
+
+.secondary-btn{
+    background:#2c3d66;
+}
+
+.login-error{
+    display:none;
+
+    background:#491f29;
+
+    border:1px solid #783746;
+
+    color:#ffb7c0;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    height:72px;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
+    background:#0f1728;
+
+    border-bottom:1px solid #243149;
+}
+
+.brand{
+    color:#6f9cff;
+
+    font-size:26px;
+
+    font-weight:900;
+}
+
+.top-actions{
+    display:flex;
+
+    gap:9px;
+    align-items:center;
+}
+
+.device-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:92px;
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:0.04em;
+    background:#172b4a;
+    border:1px solid #2e4370;
+    color:#b7d0ff;
+    text-transform:uppercase;
+}
+
+.top-btn{
+    border:1px solid #2b3957;
+
+    background:#151f34;
+
+    color:#fff;
+
+    padding:10px 13px;
+
+    border-radius:10px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.main-layout{
+    min-height:calc(100vh - 72px);
+
+    display:flex;
+}
+
+.sidebar{
+    width:238px;
+
+    flex-shrink:0;
+
+    background:#0b1322;
+
+    border-right:1px solid #202d45;
+
+    padding:22px 12px;
+}
+
+.nav-btn{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    border:1px solid transparent;
+
+    background:transparent;
+
+    color:#aab6ca;
+
+    text-align:left;
+
+    min-height:44px;
+
+    padding:10px 14px;
+
+    border-radius:8px;
+
+    margin-bottom:4px;
+
+    font-size:14px;
+
+    transition:.18s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+    background:#172b4a;
+
+    border-color:#2c4d7e;
+
+    color:#fff;
+}
+
+.nav-btn.active{
+    position:relative;
+    font-weight:700;
+}
+
+.nav-btn.active::before{
+    content:"";
+
+    position:absolute;
+    left:-12px;
+    top:7px;
+    bottom:7px;
+
+    width:3px;
+
+    border-radius:0 3px 3px 0;
+    background:#5d8cff;
+}
+
+.nav-icon{
+    width:22px;
+
+    flex-shrink:0;
+
+    color:#8da7d2;
+    font-size:17px;
+    text-align:center;
+}
+
+.nav-btn.active .nav-icon,
+.nav-btn:hover .nav-icon{
+    color:#81a8ff;
+}
+
+.content{
+    flex:1;
+
+    padding:25px;
+
+    min-width:0;
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.page-title{
+    font-size:30px;
+
+    font-weight:900;
+
+    margin-bottom:8px;
+}
+
+.page-sub{
+    color:#8d9bb2;
+
+    margin-bottom:25px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.card{
+    background:linear-gradient(180deg, rgba(17,26,44,.96), rgba(10,15,25,.96));
+
+    border:1px solid #2b3d61;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:0 14px 32px rgba(10,14,22,.28);
+}
+
+.card-title{
+    color:#8e9cb5;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+}
+
+.card-value{
+    font-size:28px;
+
+    font-weight:900;
+}
+
+.card-icon{
+    font-size:26px;
+
+    margin-bottom:10px;
+}
+
+/* =========================
+   PANEL
+========================= */
+
+.panel{
+    background:linear-gradient(180deg, rgba(17,26,44,.96), rgba(12,18,30,.96));
+
+    border:1px solid #2a3c5d;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 12px 30px rgba(9,14,23,.24);
+}
+
+.panel-head{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:17px;
+}
+
+.panel-title{
+    font-size:19px;
+
+    font-weight:800;
+}
+
+.primary{
+    border:0;
+
+    background:#527dff;
+
+    color:#fff;
+
+    padding:11px 16px;
+
+    border-radius:10px;
+
+    font-weight:700;
+}
+
+.danger{
+    border:0;
+
+    background:#d34854;
+
+    color:#fff;
+
+    padding:9px 13px;
+
+    border-radius:9px;
+}
+
+.secondary{
+    border:0;
+
+    background:#31415f;
+
+    color:#fff;
+
+    padding:9px 13px;
+
+    border-radius:9px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    width:100%;
+
+    overflow:auto;
+}
+
+table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:13px 10px;
+
+    text-align:left;
+
+    border-bottom:1px solid #22304a;
+
+    white-space:nowrap;
+}
+
+th{
+    color:#8d9bb2;
+
+    font-size:13px;
+}
+
+td{
+    color:#dae2ef;
+}
+
+.empty{
+    text-align:center;
+
+    color:#7d8aa1;
+
+    padding:25px;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+}
+
+.form-actions{
+    grid-column:1/-1;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge{
+    display:inline-block;
+
+    padding:5px 9px;
+
+    background:#1b2a47;
+
+    border:1px solid #2e4370;
+
+    border-radius:20px;
+
+    color:#9dbaff;
+
+    font-size:12px;
+}
+
+.coin{
+    color:#ffd75b;
+
+    font-weight:900;
+}
+
+.status-present{
+    color:#69e39a;
+}
+
+.status-absent{
+    color:#ff7d89;
+}
+
+.status-late{
+    color:#ffd15e;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.73);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:620px;
+
+    max-width:100%;
+
+    background:#131d31;
+
+    border:1px solid #344867;
+
+    border-radius:20px;
+
+    padding:25px;
+}
+
+.modal-title{
+    font-size:23px;
+
+    font-weight:900;
+
+    margin-bottom:20px;
+}
+
+.credentials{
+    background:#0a1120;
+
+    border:1px solid #2a3b5b;
+
+    border-radius:13px;
+
+    padding:15px;
+}
+
+.credential-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:10px 0;
+
+    border-bottom:1px solid #202e48;
+}
+
+.credential-row:last-child{
+    border-bottom:0;
+}
+
+.credential-label{
+    color:#8796ae;
+}
+
+.modal-actions{
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:flex-end;
+}
+
+/* O‘quvchilar sahifasida qo‘shish formasi belgi orqali ochiladi. */
+.student-create-panel{
+    display:none;
+}
+
+.student-create-panel.is-open{
+    display:block;
+
+    position:fixed;
+
+    inset:20px;
+
+    z-index:1001;
+
+    overflow:auto;
+
+    margin:0;
+
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+}
+
+.student-add-icon{
+    width:42px;
+    height:42px;
+
+    float:right;
+    margin-top:-50px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #3d5da0;
+    border-radius:11px;
+
+    background:#527dff;
+    color:#fff;
+
+    font-size:28px;
+    line-height:1;
+}
+
+.student-add-icon:hover{
+    background:#638cff;
+}
+
+.student-create-close{
+    border:0;
+
+    background:transparent;
+    color:#aebbd0;
+
+    font-size:27px;
+    line-height:1;
+}
+
+.student-create-close:hover{
+    color:#fff;
+}
+
+/* =========================
+   STUDENT DASHBOARD
+========================= */
+
+.student-hero{
+    display:grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap:18px;
+
+    margin-bottom:20px;
+}
+
+.profile-box{
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.avatar{
+    width:75px;
+    height:75px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#243b67;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    font-weight:900;
+}
+
+.coin-box{
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.coin-value{
+    font-size:35px;
+
+    font-weight:900;
+
+    color:#ffd65a;
+}
+
+.achievement{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:13px;
+
+    margin-top:10px;
+
+    background:#0c1424;
+
+    border:1px solid #24334e;
+
+    border-radius:12px;
+}
+
+.achievement-icon{
+    font-size:27px;
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light{
+    background:#edf2f8;
+
+    color:#182033;
+}
+
+body.light .topbar,
+body.light .sidebar{
+    background:#fff;
+
+    color:#182033;
+}
+
+body.light .panel,
+body.light .card{
+    background:#fff;
+
+    border-color:#d5deea;
+}
+
+body.light .nav-btn{
+    color:#56647b;
+}
+
+body.light .nav-btn.active,
+body.light .nav-btn:hover{
+    background:#edf3ff;
+
+    border-color:#cbd9f3;
+
+    color:#17213a;
+}
+
+body.light .page-sub,
+body.light .card-title,
+body.light th{
+    color:#697890;
+}
+
+body.light td{
+    color:#29364d;
+}
+
+body.light .top-btn{
+    background:#f2f5fa;
+
+    color:#182033;
+
+    border-color:#d1d9e5;
+}
+
+body.light .field input,
+body.light .field select{
+    background:#fff;
+
+    color:#182033;
+
+    border-color:#ced7e5;
+}
+
+body.light .modal-box{
+    background:#fff;
+
+    color:#182033;
+}
+
+body.light .credentials{
+    background:#f5f8fc;
+
+    border-color:#d5deeb;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .cards{
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .student-hero{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:900px){
+
+    .main-layout{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+
+        display:flex;
+        flex-wrap:nowrap;
+        overflow:auto;
+
+        gap:7px;
+
+        border-right:0;
+
+        border-bottom:1px solid #202d45;
+        padding:12px 10px;
+    }
+
+    .nav-btn{
+        width:auto;
+
+        min-width:max-content;
+
+        margin:0;
+    }
+
+    .content{
+        padding:18px 16px 22px;
+    }
+
+    .panel-head{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .topbar{
+        height:auto;
+        min-height:72px;
+        padding:12px 16px;
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .top-actions{
+        margin-left:auto;
+    }
+
+}
+
+@media(max-width:650px){
+
+    body{
+        min-width:320px;
+    }
+
+    .content{
+        padding:14px 12px 18px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .form-actions{
+        grid-column:auto;
+    }
+
+    .cards{
+        grid-template-columns:
+            1fr;
+    }
+
+    .topbar{
+        padding:10px 12px;
+    }
+
+    .brand{
+        font-size:21px;
+    }
+
+    .top-actions{
+        width:100%;
+        justify-content:flex-end;
+    }
+
+    .top-btn{
+        flex:1;
+        min-width:0;
+    }
+
+    .login-box{
+        padding:25px 20px;
+    }
+
+    .page-title{
+        font-size:24px;
+    }
+
+    .login-sub{
+        font-size:14px;
+    }
+
+    .modal-box{
+        padding:18px 16px;
+    }
+
+    .modal-actions{
+        justify-content:stretch;
+    }
+
+    .modal-actions .secondary{
+        width:100%;
+    }
+
+    .table-wrap{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:620px;
+    }
+
+    .sidebar{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-btn{
+        width:100%;
+        min-width:0;
+    }
+
+    .profile-box{
+        align-items:flex-start;
+    }
+
+    .avatar{
+        width:58px;
+        height:58px;
+        font-size:24px;
+    }
+
+    .coin-value{
+        font-size:28px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ==================================================
+     LOGIN
+================================================== -->
+
+<section id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">
+            COVERSE
+        </div>
+
+        <div class="login-sub">
+            Ta'lim boshqaruv platformasi
+        </div>
+
+        <div
+            id="loginError"
+            class="login-error"
+        ></div>
+
+        <div class="field">
+
+            <label>
+                Telefon raqam
+            </label>
+
+            <input
+                id="loginPhone"
+                type="text"
+                placeholder="Telefon raqam"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Login
+            </label>
+
+            <input
+                id="loginUsername"
+                type="text"
+                placeholder="Login"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Parol
+            </label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Parol"
+            >
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="login()"
+        >
+            KIRISH
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==================================================
+     APP
+================================================== -->
+
+<section
+    id="app"
+    class="hidden"
+>
+
+    <header class="topbar">
+
+        <div class="brand" aria-label="Coverse homepage">
+            Coverse
+        </div>
+
+        <div id="deviceModeBadge" class="device-badge" aria-live="polite">
+            Desktop
+        </div>
+
+        <div class="top-actions">
+
+            <button
+                class="top-btn"
+                onclick="toggleTheme()"
+                title="Tema"
+            >
+                🌙
+            </button>
+
+            <button
+                class="top-btn"
+                onclick="toggleFullscreen()"
+                title="To‘liq ekran"
+            >
+                ⛶
+            </button>
+
+            <button
+                class="top-btn"
+                onclick="logout()"
+            >
+                Chiqish
+            </button>
+
+        </div>
+
+    </header>
+
+    <div class="main-layout">
+
+        <aside
+            id="sidebar"
+            class="sidebar"
+        ></aside>
+
+        <main
+            id="content"
+            class="content"
+        ></main>
+
+    </div>
+
+</section>
+
+<!-- ==================================================
+     MODAL
+================================================== -->
+
+<div
+    id="modal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div
+            id="modalTitle"
+            class="modal-title"
+        ></div>
+
+        <div
+            id="modalBody"
+        ></div>
+
+        <div class="modal-actions">
+
+            <button
+                class="secondary"
+                onclick="closeModal()"
+            >
+                Yopish
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ==================================================
+   STORAGE
+================================================== */
+
+const SAVE_KEY =
+    "coverse_complete_v50";
+
+const THEME_KEY =
+    "coverse_theme_v50";
+
+const AUTOSAVE_INTERVAL_MS =
+    2 * 60 * 1000;
+
+const REMOTE_SAVE_DEBOUNCE_MS = 350;
+
+let remoteSaveTimer = null;
+
+async function apiRequest(path, options = {}){
+
+    try{
+
+        const response =
+            await fetch(path, options);
+
+        if(!response.ok){
+            return null;
+        }
+
+        return await response.json();
+
+    }catch{
+        return null;
+    }
+
+}
+
+async function readRemoteData(){
+
+    const payload =
+        await apiRequest("/api/data");
+
+    if(!payload || !payload.ok || !payload.data){
+        return null;
+    }
+
+    return payload.data;
+
+}
+
+async function readPublicData(){
+
+    const payload =
+        await apiRequest("/api/public-data");
+
+    if(!payload || !payload.ok || !payload.data){
+        return null;
+    }
+
+    return payload.data;
+
+}
+
+async function writeRemoteData(data){
+
+    const payload =
+        await apiRequest("/api/save", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(data)
+        });
+
+    return payload;
+
+}
+
+/* ==================================================
+   MAIN TEACHER
+================================================== */
+
+const MAIN_TEACHER = {
+
+    id:1,
+
+    role:"teacher",
+
+    isMain:true,
+
+    isAdmin:true,
+
+    hiddenFromList:true,
+
+    full_name:"Bosh admin",
+
+    phone:"",
+
+    username:"owner",
+
+    password:"",
+
+    coins:0
+
+};
+
+/* ==================================================
+   DATA
+================================================== */
+
+let users = [];
+
+let groups = [];
+
+let subjects = [];
+
+let grades = [];
+
+let attendance = [];
+
+let notices = [];
+
+let publicEntries = [];
+
+let currentUser = null;
+
+let currentPage = "dashboard";
+
+let aiChatHistory = [];
+
+function getAiChatHistory(){
+
+    try{
+
+        const saved = localStorage.getItem("coverse_ai_chat");
+
+        if(!saved){
+            return [];
+        }
+
+        const parsed = JSON.parse(saved);
+        return Array.isArray(parsed) ? parsed : [];
+
+    }catch{
+        return [];
+    }
+
+}
+
+function saveAiChatHistory(){
+
+    localStorage.setItem(
+        "coverse_ai_chat",
+        JSON.stringify(aiChatHistory)
+    );
+
+}
+
+async function getAiReply(message){
+
+    const trimmed = String(message || "").trim();
+
+    if(!trimmed){
+        return "Savolni yozing.";
+    }
+
+    const apiKey = localStorage.getItem("coverse_ai_api_key");
+
+    if(apiKey){
+
+        try{
+
+            const response = await fetch(
+                "https://openrouter.ai/api/v1/chat/completions",
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization": `Bearer ${apiKey}`,
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        model:"openai/gpt-4o-mini",
+                        messages:[
+                            {
+                                role:"system",
+                                content:"You are a helpful Uzbek assistant for an education management system. Reply in Uzbek unless the user asks otherwise. Keep answers short, clear, and practical."
+                            },
+                            {
+                                role:"user",
+                                content:trimmed
+                            }
+                        ]
+                    })
+                }
+            );
+
+            if(response.ok){
+
+                const payload = await response.json();
+
+                const answer = payload?.choices?.[0]?.message?.content;
+
+                if(answer && answer.trim()){
+                    return answer.trim();
+                }
+
+            }
+
+        }catch{
+            // Fallback to local assistant if API is unavailable.
+        }
+
+    }
+
+    const normalized = trimmed.toLowerCase();
+
+    if(normalized.includes("salom") || normalized.includes("hello")){
+        return "Salom! Men sizga platforma bo‘yicha yordam bera olaman. Qanday yordam kerak?";
+    }
+
+    if(normalized.includes("davomat") || normalized.includes("attendance")){
+        return "Davomat bo‘limi orqali o‘quvchilar kelgan-kelmagan holatini ko‘rishingiz va yozishingiz mumkin.";
+    }
+
+    if(normalized.includes("baho") || normalized.includes("grade") || normalized.includes("ball")){
+        return "Baholar bo‘limidan fanlar bo‘yicha baho qo‘shish, ko‘rish va tahlil qilish mumkin.";
+    }
+
+    if(normalized.includes("guruh") || normalized.includes("group")){
+        return "Guruhlar bo‘limi orqali guruhlar yaratiladi va o‘quvchilar beriladi.";
+    }
+
+    if(normalized.includes("coin") || normalized.includes("coin berish")){
+        return "Coin berish bo‘limi orqali foydalanuvchilarga rag‘batlantirish uchun coin yuborishingiz mumkin.";
+    }
+
+    if(normalized.includes("admin") || normalized.includes("bosh admin")){
+        return "Bosh admin tizimni boshqaradi, foydalanuvchilarni yaratadi va parollarni nazorat qiladi.";
+    }
+
+    if(normalized.includes("qanday") || normalized.includes("yordam") || normalized.includes("help")){
+        return "Men bu platformada guruh, davomat, baho, coin va foydalanuvchilarni boshqarishda yordam beraman. Sizga nima kerak?";
+    }
+
+    return `Men tushundim: "${trimmed}". Bu platformada eng tezkor yechim uchun guruhlar, davomat, baholar yoki foydalanuvchilar bo‘limini tekshirishni maslahat beraman.`;
+
+}
+
+/* ==================================================
+   LOAD
+================================================== */
+
+async function loadData(){
+
+    const saved = currentUser
+        ? localStorage.getItem(SAVE_KEY)
+        : null;
+
+    if(saved){
+
+        try{
+
+            const data =
+                JSON.parse(saved);
+
+            users =
+                Array.isArray(data.users)
+                ? data.users
+                : [];
+
+            groups =
+                Array.isArray(data.groups)
+                ? data.groups
+                : [];
+
+            subjects =
+                Array.isArray(data.subjects)
+                ? data.subjects
+                : [];
+
+            grades =
+                Array.isArray(data.grades)
+                ? data.grades
+                : [];
+
+            attendance =
+                Array.isArray(data.attendance)
+                ? data.attendance
+                : [];
+
+            notices =
+                Array.isArray(data.notices)
+                ? data.notices
+                : [];
+
+            publicEntries =
+                Array.isArray(data.publicEntries)
+                ? data.publicEntries
+                : [];
+
+        }catch{
+
+            users = [];
+            groups = [];
+            subjects = [];
+            grades = [];
+            attendance = [];
+            notices = [];
+            publicEntries = [];
+
+        }
+
+    }
+
+    const remoteData =
+        currentUser
+        ? await readRemoteData()
+        : await readPublicData();
+
+    if(remoteData){
+
+        if(currentUser){
+            users =
+                Array.isArray(remoteData.users)
+                ? remoteData.users
+                : users;
+        }
+
+        if(currentUser){
+            groups =
+                Array.isArray(remoteData.groups)
+                ? remoteData.groups
+                : groups;
+        }
+
+        if(currentUser){
+            subjects =
+                Array.isArray(remoteData.subjects)
+                ? remoteData.subjects
+                : subjects;
+        }
+
+        if(currentUser){
+            grades =
+                Array.isArray(remoteData.grades)
+                ? remoteData.grades
+                : grades;
+        }
+
+        if(currentUser){
+            attendance =
+                Array.isArray(remoteData.attendance)
+                ? remoteData.attendance
+                : attendance;
+        }
+
+        if(currentUser){
+            notices =
+                Array.isArray(remoteData.notices)
+                ? remoteData.notices
+                : notices;
+        }
+
+        publicEntries =
+            Array.isArray(remoteData.publicEntries)
+            ? remoteData.publicEntries
+            : publicEntries;
+
+        if(currentUser){
+            localStorage.setItem(
+                SAVE_KEY,
+                JSON.stringify({
+                    users,
+                    groups,
+                    subjects,
+                    grades,
+                    attendance,
+                    notices,
+                    publicEntries
+                })
+            );
+        }
+
+    }
+
+    renderPublicEntries();
+
+    aiChatHistory = getAiChatHistory();
+
+    ensureMainTeacher();
+}
+
+/* ==================================================
+   SAVE
+================================================== */
+
+function saveData(){
+
+    const data = {
+
+        users,
+
+        groups,
+
+        subjects,
+
+        grades,
+
+        attendance,
+
+        notices,
+
+        publicEntries
+
+    };
+
+    localStorage.setItem(
+
+        SAVE_KEY,
+
+        JSON.stringify(data)
+
+    );
+
+    if(remoteSaveTimer){
+        clearTimeout(remoteSaveTimer);
+    }
+
+    remoteSaveTimer = setTimeout(() => {
+        writeRemoteData(data);
+        remoteSaveTimer = null;
+    }, REMOTE_SAVE_DEBOUNCE_MS);
+
+}
+
+function startAutosave(){
+
+    setInterval(() => {
+        saveData();
+    }, AUTOSAVE_INTERVAL_MS);
+
+    window.addEventListener(
+        "beforeunload",
+        () => {
+            saveData();
+            if(remoteSaveTimer){
+                clearTimeout(remoteSaveTimer);
+                writeRemoteData({
+                    users,
+                    groups,
+                    subjects,
+                    grades,
+                    attendance,
+                    notices,
+                    publicEntries
+                });
+            }
+        }
+    );
+
+}
+
+/* ==================================================
+   ENSURE MAIN TEACHER
+================================================== */
+
+function ensureMainTeacher(){
+
+    let main =
+        users.find(
+            u => u.isMain === true
+        );
+
+    if(!main){
+
+        main = {
+            ...MAIN_TEACHER
+        };
+
+        users.push(main);
+
+    }else{
+
+        main.id = 1;
+
+        main.role = "teacher";
+
+        main.isMain = true;
+
+        main.isAdmin = true;
+
+        main.hiddenFromList = true;
+
+        main.full_name ||= "Bosh admin";
+
+        main.phone ||= "";
+
+        main.username ||= "owner";
+
+        main.password ||= "";
+
+    }
+
+    users.forEach(user => {
+
+        if(
+            typeof user.coins !== "number"
+        ){
+
+            user.coins = 0;
+
+        }
+
+    });
+
+    saveData();
+}
+
+/* ==================================================
+   HELPERS
+================================================== */
+
+function students(){
+
+    return users.filter(
+        user => user.role === "student"
+    );
+
+}
+
+function regularTeachers(){
+
+    return users.filter(
+        user =>
+            user.role === "teacher" &&
+            user.isMain !== true
+    );
+
+}
+
+function secondaryAdminUsers(){
+
+    return users.filter(
+        user =>
+            user.role === "teacher" &&
+            user.isMain !== true &&
+            user.isAdmin === true
+    );
+
+}
+
+function canManageAdminAccounts(){
+
+    return Boolean(
+        currentUser &&
+        (
+            currentUser.isMain === true ||
+            currentUser.isAdmin === true
+        )
+    );
+
+}
+
+function groupName(id){
+
+    const group =
+        groups.find(
+            g => g.id === id
+        );
+
+    return group
+        ? group.name
+        : "Guruh yo‘q";
+
+}
+
+function getTeacherName(id){
+
+    const teacher =
+        users.find(
+            u => u.id === id
+        );
+
+    return teacher
+        ? teacher.full_name
+        : "-";
+
+}
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+function toast(message){
+
+    alert(message);
+
+}
+
+/* ==================================================
+   LOGIN
+================================================== */
+
+async function login(){
+
+    const phone =
+        document
+        .getElementById("loginPhone")
+        .value
+        .trim();
+
+    const username =
+        document
+        .getElementById("loginUsername")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+    const authenticated =
+        await apiRequest("/api/login", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                phone,
+                username,
+                password
+            })
+        });
+
+    if(!authenticated || !authenticated.ok){
+
+        const error =
+            document.getElementById(
+                "loginError"
+            );
+
+        error.textContent =
+            "Telefon, login yoki parol noto‘g‘ri.";
+
+        error.style.display = "block";
+
+        return;
+
+    }
+
+    currentUser = authenticated.user;
+
+    await loadData();
+
+    const user =
+        users.find(
+            item => item.id === currentUser.id
+        ) || currentUser;
+
+    currentUser = user;
+
+    document
+        .getElementById("loginPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("app")
+        .classList.remove("hidden");
+
+    currentPage = "dashboard";
+
+    render();
+
+}
+
+/* ==================================================
+   LOGOUT
+================================================== */
+
+function logout(){
+
+    currentUser = null;
+
+    renderPublicEntries();
+
+    apiRequest("/api/logout", {
+        method:"POST"
+    });
+
+    document
+        .getElementById("app")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
+
+}
+
+/* ==================================================
+   PUBLIC ENTRIES
+================================================== */
+
+function renderPublicEntries(){
+
+    const list =
+        document.getElementById(
+            "publicEntriesList"
+        );
+
+    if(!list){
+        return;
+    }
+
+    if(!publicEntries.length){
+
+        list.innerHTML = `
+            <div class="empty-entry">
+                Hozircha yozuvlar yo‘q
+            </div>
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML = publicEntries
+        .slice()
+        .reverse()
+        .map(item => `
+
+            <div class="public-entry-item">
+
+                <div>
+                    ${escapeHtml(item.text)}
+                </div>
+
+                <small>
+                    ${escapeHtml(item.createdAt)}
+                </small>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+function addPublicEntry(){
+
+    const input =
+        document.getElementById(
+            "publicEntryInput"
+        );
+
+    const text =
+        input.value.trim();
+
+    if(!text){
+
+        toast("Yozuvni kiriting.");
+
+        return;
+
+    }
+
+    publicEntries.push({
+
+        id:Date.now(),
+
+        text,
+
+        createdAt:
+            new Date()
+            .toLocaleString("uz-UZ")
+
+    });
+
+    saveData();
+
+    renderPublicEntries();
+
+    input.value = "";
+
+    toast("Yozuv saqlandi.");
+
+}
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+function nav(page,text){
+
+    const icons = {
+        dashboard:"⌂",
+        groups:"♧",
+        students:"♙",
+        teachers:"♟",
+        subjects:"▤",
+        grades:"▣",
+        coins:"◈",
+        attendance:"✓",
+        notices:"▱",
+        "ai-chat":"✦",
+        profile:"●"
+    };
+
+    return `
+
+        <button
+            class="nav-btn ${
+                currentPage === page
+                ? "active"
+                : ""
+            }"
+            onclick="go('${page}')"
+        >
+            <span class="nav-icon" aria-hidden="true">
+                ${icons[page] || "•"}
+            </span>
+
+            <span>
+                ${text}
+            </span>
+        </button>
+
+    `;
+
+}
+
+function go(page){
+
+    currentPage = page;
+
+    render();
+
+}
+
+/* ==================================================
+   RENDER
+================================================== */
+
+function render(){
+
+    renderSidebar();
+
+    if(!currentUser){
+        return;
+    }
+
+    switch(currentPage){
+
+        case "dashboard":
+            renderDashboard();
+            break;
+
+        case "groups":
+            renderGroups();
+            break;
+
+        case "students":
+            renderStudents();
+            break;
+
+        case "teachers":
+            renderTeachers();
+            break;
+
+        case "subjects":
+            renderSubjects();
+            break;
+
+        case "grades":
+            renderGrades();
+            break;
+
+        case "coins":
+            renderCoins();
+            break;
+
+        case "attendance":
+            renderAttendance();
+            break;
+
+        case "notices":
+            renderNotices();
+            break;
+
+        case "ai-chat":
+            renderAiChat();
+            break;
+
+        case "profile":
+            renderStudentProfile();
+            break;
+
+        default:
+            renderDashboard();
+
+    }
+
+}
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+function renderSidebar(){
+
+    const sidebar =
+        document.getElementById(
+            "sidebar"
+        );
+
+    if(!currentUser){
+        sidebar.innerHTML = "";
+        return;
+    }
+
+    let html = "";
+
+    html += nav(
+        "dashboard",
+        "Dashboard"
+    );
+
+    if(currentUser.isMain){
+
+        html += nav(
+            "groups",
+            "Guruhlar"
+        );
+
+        html += nav(
+            "students",
+            "O‘quvchilar"
+        );
+
+        html += nav(
+            "teachers",
+            "O‘qituvchilar"
+        );
+
+        html += nav(
+            "subjects",
+            "Fanlar"
+        );
+
+        html += nav(
+            "grades",
+            "Baholar"
+        );
+
+        html += nav(
+            "coins",
+            "Coin berish"
+        );
+
+        html += nav(
+            "attendance",
+            "Davomat"
+        );
+
+    }
+
+    html += nav(
+        "notices",
+        "E'lonlar"
+    );
+
+    html += nav(
+        "ai-chat",
+        "AI Chat"
+    );
+
+    html += nav(
+        "profile",
+        "Profil"
+    );
+
+    sidebar.innerHTML = html;
+
+}
+
+/* ==================================================
+   HEADER
+================================================== */
+
+function pageHeader(title,sub){
+
+    return `
+
+        <div class="page-title">
+            ${title}
+        </div>
+
+        <div class="page-sub">
+            ${sub}
+        </div>
+
+    `;
+
+}
+
+/* ==================================================
+   DASHBOARD
+================================================== */
+
+function renderDashboard(){
+
+    const studentCount =
+        students().length;
+
+    const teacherCount =
+        regularTeachers().length;
+
+    const groupCount =
+        groups.length;
+
+    const subjectCount =
+        subjects.length;
+
+    const recentStudents =
+        students()
+        .slice()
+        .reverse()
+        .slice(0,5);
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+            ${pageHeader(
+                "Dashboard",
+                "Coverse boshqaruv paneli"
+            )}
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👨‍🎓
+                    </div>
+
+                    <div class="card-title">
+                        O‘quvchilar
+                    </div>
+
+                    <div class="card-value">
+                        ${studentCount}
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👨‍🏫
+                    </div>
+
+                    <div class="card-title">
+                        O‘qituvchilar
+                    </div>
+
+                    <div class="card-value">
+                        ${teacherCount}
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👥
+                    </div>
+
+                    <div class="card-title">
+                        Guruhlar
+                    </div>
+
+                    <div class="card-value">
+                        ${groupCount}
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+                    <div class="card-title">
+                        Fanlar
+                    </div>
+
+                    <div class="card-value">
+                        ${subjectCount}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel">
+
+                <div class="panel-head">
+
+                    <div class="panel-title">
+                        So‘nggi o‘quvchilar
+                    </div>
+
+                    <button
+                        class="primary"
+                        onclick="go('students')"
+                    >
+                        Barchasi
+                    </button>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>F.I.Sh.</th>
+                                <th>Guruh</th>
+                                <th>Coin</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            ${
+                                recentStudents.length
+
+                                ?
+
+                                recentStudents
+                                .map(s => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.full_name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                groupName(
+                                                    s.groupId
+                                                )
+                                            )}
+                                        </td>
+
+                                        <td class="coin">
+                                            🪙 ${s.coins}
+                                        </td>
+
+                                    </tr>
+
+                                `)
+                                .join("")
+
+                                :
+
+                                `
+
+                                <tr>
+                                    <td
+                                        colspan="3"
+                                        class="empty"
+                                    >
+                                        O‘quvchilar yo‘q
+                                    </td>
+                                </tr>
+
+                                `
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        `;
+
+}
+
+/* ==================================================
+   GROUPS
+================================================== */
+
+function renderGroups(){
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Guruhlar",
+            "O‘quvchilar guruhlarini boshqaring"
+        )}
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Yangi guruh
+            </div>
+
+            <br>
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        Guruh nomi
+                    </label>
+
+                    <input
+                        id="groupName"
+                        placeholder="Masalan: IT-1"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Izoh
+                    </label>
+
+                    <input
+                        id="groupDescription"
+                        placeholder="Guruh haqida"
+                    >
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addGroup()"
+                    >
+                        Guruh qo‘shish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Mavjud guruhlar
+            </div>
+
+            <br>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+                            <th>Guruh</th>
+                            <th>Izoh</th>
+                            <th>O‘quvchilar</th>
+                            <th></th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            groups.length
+
+                            ?
+
+                            groups.map((g,index)=>{
+
+                                const count =
+                                    students()
+                                    .filter(
+                                        s =>
+                                        s.groupId === g.id
+                                    )
+                                    .length;
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+                                            ${index + 1}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.description || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${count}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="danger"
+                                                onclick="deleteGroup(${g.id})"
+                                            >
+                                                O‘chirish
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            }).join("")
+
+                            :
+
+                            `
+
+                                <tr>
+
+                                    <td
+                                        colspan="5"
+                                        class="empty"
+                                    >
+                                        Guruhlar yo‘q
+                                    </td>
+
+                                </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addGroup(){
+
+    const name =
+        document
+        .getElementById("groupName")
+        .value
+        .trim();
+
+    const description =
+        document
+        .getElementById("groupDescription")
+        .value
+        .trim();
+
+    if(!name){
+
+        toast(
+            "Guruh nomini kiriting."
+        );
+
+        return;
+
+    }
+
+    groups.push({
+
+        id:Date.now(),
+
+        name,
+
+        description
+
+    });
+
+    saveData();
+
+    render();
+
+    toast(
+        "Guruh qo‘shildi."
+    );
+
+}
+
+function deleteGroup(id){
+
+    if(
+        !confirm(
+            "Bu guruhni o‘chirmoqchimisiz?"
+        )
+    ){
+        return;
+    }
+
+    groups =
+        groups.filter(
+            g => g.id !== id
+        );
+
+    saveData();
+
+    render();
+
+}
+
+/* ==================================================
+   STUDENTS
+================================================== */
+
+function canEditUser(user){
+
+    return Boolean(
+        currentUser &&
+        (
+            currentUser.isMain ||
+            currentUser.id === user.id
+        )
+    );
+
+}
+
+function canResetUserPassword(user){
+
+    return Boolean(
+        currentUser &&
+        (
+            currentUser.isMain ||
+            currentUser.id === user.id
+        )
+    );
+
+}
+
+function canDeleteUser(user){
+
+    return Boolean(
+        currentUser &&
+        !user.isMain &&
+        (
+            currentUser.isMain ||
+            (
+                currentUser.role === "student" &&
+                user.role === "student"
+            )
+        )
+    );
+
+}
+
+function editUserCredentials(id){
+
+    const user = users.find(item => item.id === id);
+
+    if(!user || !canEditUser(user)){
+        toast("Bu akkauntni o‘zgartirish huquqi yo‘q.");
+        return;
+    }
+
+    const username = prompt("Yangi login:", user.username);
+    if(username === null){
+        return;
+    }
+
+    const password = prompt("Yangi parol:", user.password);
+    if(password === null){
+        return;
+    }
+
+    const newUsername = username.trim();
+    const newPassword = password.trim();
+
+    if(!newUsername || !newPassword){
+        toast("Login va parol bo‘sh bo‘lmasin.");
+        return;
+    }
+
+    if(users.some(item =>
+        item.id !== id &&
+        String(item.username).toLowerCase() === newUsername.toLowerCase()
+    )){
+        toast("Bu login band.");
+        return;
+    }
+
+    user.username = newUsername;
+    user.password = newPassword;
+    saveData();
+    toast("Login va parol yangilandi.");
+    render();
+
+}
+
+function resetUserPassword(id){
+
+    const user = users.find(item => item.id === id);
+
+    if(!user || !canResetUserPassword(user)){
+        toast("Bu parolni qayta sozlash huquqi yo‘q.");
+        return;
+    }
+
+    const nextPassword = prompt(
+        "Yangi vaqtinchalik parolni kiriting. Bo‘sh qoldirsangiz parol o‘chirib tashlanadi:",
+        user.password
+    );
+
+    if(nextPassword === null){
+        return;
+    }
+
+    const cleanPassword = nextPassword.trim();
+
+    user.password = cleanPassword;
+    saveData();
+
+    if(cleanPassword.length === 0){
+        toast("Parol bekor qilindi.");
+    }else{
+        toast("Vaqtinchalik parol o‘rnatildi.");
+    }
+
+    render();
+
+}
+
+function deleteUser(id){
+
+    const user = users.find(item => item.id === id);
+
+    if(!user || !canDeleteUser(user)){
+        toast("Bu akkauntni o‘chirish huquqi yo‘q.");
+        return;
+    }
+
+    if(!confirm(`${user.full_name} akkauntini o‘chirishni tasdiqlaysizmi?`)){
+        return;
+    }
+
+    users = users.filter(item => item.id !== id);
+    saveData();
+    render();
+
+}
+
+function renderStudents(){
+
+    const list =
+        students();
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "O‘quvchilar",
+            "O‘qituvchi o‘quvchi hisobini yaratadi"
+        )}
+
+        <div class="panel">
+
+            <div class="panel-head">
+
+                <div class="panel-title">
+                    O‘quvchi qo‘shish
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        F.I.Sh.
+                    </label>
+
+                    <input
+                        id="studentName"
+                        placeholder="To‘liq ism"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Tug‘ilgan sana
+                    </label>
+
+                    <input
+                        id="studentBirth"
+                        type="date"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        JShShIR
+                    </label>
+
+                    <input
+                        id="studentJshshir"
+                        maxlength="14"
+                        inputmode="numeric"
+                        placeholder="14 xonali JShShIR"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Telefon
+                    </label>
+
+                    <input
+                        id="studentPhone"
+                        placeholder="Telefon raqam"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Login
+                    </label>
+
+                    <input
+                        id="studentUsername"
+                        placeholder="Login"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Parol
+                    </label>
+
+                    <input
+                        id="studentPassword"
+                        type="password"
+                        placeholder="Parol"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Guruh
+                    </label>
+
+                    <select id="studentGroup">
+
+                        <option value="">
+                            Guruh tanlang
+                        </option>
+
+                        ${
+                            groups.map(
+                                g => `
+
+                                    <option
+                                        value="${g.id}"
+                                    >
+                                        ${escapeHtml(
+                                            g.name
+                                        )}
+                                    </option>
+
+                                `
+                            ).join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addStudent()"
+                    >
+                        O‘quvchi yaratish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="panel-head">
+
+                <div class="panel-title">
+                    O‘quvchilar ro‘yxati
+                </div>
+
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>F.I.Sh.</th>
+                            <th>Tug‘ilgan sana</th>
+                            <th>JShShIR</th>
+                            <th>Telefon</th>
+                            <th>Login</th>
+                            <th>Guruh</th>
+                            <th>Coin</th>
+                            <th>Amallar</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            list.length
+
+                            ?
+
+                            list.map(
+                                s => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.full_name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.birth || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.jshshir || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.phone
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.username
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                groupName(
+                                                    s.groupId
+                                                )
+                                            )}
+                                        </td>
+
+                                        <td class="coin">
+                                            🪙 ${s.coins}
+                                        </td>
+
+                                        <td>
+                                            ${
+                                                canEditUser(s)
+                                                ? `<button class="secondary" onclick="editUserCredentials(${s.id})">Login/parol</button>`
+                                                : ""
+                                            }
+                                            ${
+                                                canResetUserPassword(s)
+                                                ? `<button class="secondary" onclick="resetUserPassword(${s.id})">Vaqtinchalik parol</button>`
+                                                : ""
+                                            }
+                                            ${
+                                                canDeleteUser(s)
+                                                ? `<button class="danger" onclick="deleteUser(${s.id})">O‘chirish</button>`
+                                                : ""
+                                            }
+                                        </td>
+
+                                    </tr>
+
+                                `
+                            ).join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="empty"
+                                >
+                                    O‘quvchilar yo‘q
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addStudent(){
+
+    if(
+        !currentUser ||
+        currentUser.role !== "teacher"
+    ){
+
+        toast(
+            "Faqat o‘qituvchi o‘quvchi qo‘sha oladi."
+        );
+
+        return;
+
+    }
+
+    const full_name =
+        document
+        .getElementById("studentName")
+        .value
+        .trim();
+
+    const birth =
+        document
+        .getElementById("studentBirth")
+        .value;
+
+    const jshshir =
+        document
+        .getElementById("studentJshshir")
+        .value
+        .trim();
+
+    const phone =
+        document
+        .getElementById("studentPhone")
+        .value
+        .trim();
+
+    const username =
+        document
+        .getElementById("studentUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("studentPassword")
+        .value;
+
+    const groupId =
+        Number(
+            document
+            .getElementById("studentGroup")
+            .value
+        ) || null;
+
+    if(
+        !full_name ||
+        !birth ||
+        !jshshir ||
+        !phone ||
+        !username ||
+        !password
+    ){
+
+        toast(
+            "Barcha maydonlarni to‘ldiring."
+        );
+
+        return;
+    }
+
+    if(
+        !/^\d{14}$/.test(jshshir)
+    ){
+
+        toast(
+            "JShShIR aynan 14 ta raqam bo‘lishi kerak."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u =>
+            String(u.username).toLowerCase()
+            === username.toLowerCase()
+        )
+    ){
+
+        toast(
+            "Bu login band."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u => String(u.phone) === phone
+        )
+    ){
+
+        toast(
+            "Bu telefon raqam band."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u => u.jshshir === jshshir
+        )
+    ){
+
+        toast(
+            "Bu JShShIR allaqachon mavjud."
+        );
+
+        return;
+
+    }
+
+    const student = {
+
+        id:Date.now(),
+
+        role:"student",
+
+        isMain:false,
+
+        full_name,
+
+        birth,
+
+        jshshir,
+
+        phone,
+
+        username,
+
+        password,
+
+        groupId,
+
+        coins:0
+
+    };
+
+    users.push(student);
+
+    saveData();
+
+    showCredentials(
+        "O‘quvchi yaratildi",
+        student
+    );
+
+    renderStudents();
+
+}
+
+/* ==================================================
+   TEACHERS
+================================================== */
+
+function renderTeachers(){
+
+    if(
+        !currentUser ||
+        currentUser.role !== "teacher" ||
+        (
+            currentUser.hiddenFromList === true &&
+            currentUser.isMain !== true
+        )
+    ){
+
+        toast(
+            "Faqat bosh admin va o‘qituvchilar bu bo‘limga kira oladi."
+        );
+
+        currentPage =
+            "dashboard";
+
+        render();
+
+        return;
+
+    }
+
+    const list =
+        users.filter(
+            user =>
+                user.role === "teacher" &&
+                user.hiddenFromList !== true &&
+                (
+                    currentUser.isMain ||
+                    user.isMain !== true
+                )
+        );
+
+    const mainTeacher =
+        users.find(
+            user => user.isMain === true
+        ) || MAIN_TEACHER;
+
+    const createTeacherPanel =
+        canManageAdminAccounts()
+        ?
+        `
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Yangi o‘qituvchi
+            </div>
+
+            <br>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>F.I.Sh.</label>
+                    <input id="teacherName" placeholder="To‘liq ism">
+                </div>
+
+                <div class="field">
+                    <label>Tug‘ilgan sana</label>
+                    <input id="teacherBirth" type="date">
+                </div>
+
+                <div class="field">
+                    <label>JShShIR</label>
+                    <input id="teacherJshshir" maxlength="14" inputmode="numeric" placeholder="14 xonali JShShIR">
+                </div>
+
+                <div class="field">
+                    <label>Telefon</label>
+                    <input id="teacherPhone" placeholder="Telefon raqam">
+                </div>
+
+                <div class="field">
+                    <label>Login</label>
+                    <input id="teacherUsername" placeholder="Login">
+                </div>
+
+                <div class="field">
+                    <label>Parol</label>
+                    <input id="teacherPassword" type="password" placeholder="Parol">
+                </div>
+
+                <div class="form-actions">
+                    <button class="primary" onclick="addTeacher()">
+                        O‘qituvchi yaratish
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        `
+        :
+        "";
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "O‘qituvchilar",
+            currentUser.isMain
+            ? "O‘qituvchilarni ko‘ring va yangi hisob yarating"
+            : "O‘qituvchilar ro‘yxati"
+        )}
+
+        ${false ? `
+        <div class="panel">
+
+            <div class="panel-title">
+                Bosh admin
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                ${escapeHtml(
+                                    mainTeacher.full_name
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    mainTeacher.phone
+                                )}
+                            </td>
+
+                            <td>
+                                <button
+                                    class="secondary"
+                                    onclick="editUserCredentials(${mainTeacher.id})"
+                                >
+                                    Login/parol
+                                </button>
+                                <button
+                                    class="secondary"
+                                    onclick="resetUserPassword(${mainTeacher.id})"
+                                >
+                                    Vaqtinchalik parol
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+        ` : ""}
+
+        ${createTeacherPanel}
+
+        <div class="panel">
+
+            <div class="panel-title">
+                O‘qituvchilar ro‘yxati
+            </div>
+
+            <br>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>F.I.Sh.</th>
+                            <th>Tug‘ilgan sana</th>
+                            <th>JShShIR</th>
+                            <th>Telefon</th>
+                            <th>Login</th>
+                            <th>Amallar</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            list.length
+
+                            ?
+
+                            list.map(
+                                t => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                t.full_name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                t.birth || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                t.jshshir || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                t.phone
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                t.username
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${
+                                                canEditUser(t)
+                                                ? `<button class="secondary" onclick="editUserCredentials(${t.id})">Login/parol</button>`
+                                                : ""
+                                            }
+                                            ${
+                                                canResetUserPassword(t)
+                                                ? `<button class="secondary" onclick="resetUserPassword(${t.id})">Vaqtinchalik parol</button>`
+                                                : ""
+                                            }
+                                            ${
+                                                canDeleteUser(t)
+                                                ? `<button class="danger" onclick="deleteUser(${t.id})">O‘chirish</button>`
+                                                : ""
+                                            }
+                                        </td>
+
+                                    </tr>
+
+                                `
+                            ).join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="empty"
+                                >
+                                    O‘qituvchilar yo‘q
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addTeacher(){
+
+    if(
+        !currentUser ||
+        currentUser.role !== "teacher" ||
+        !canManageAdminAccounts()
+    ){
+
+        toast(
+            "Faqat bosh admin va adminlar yangi admin yaratishi mumkin."
+        );
+
+        return;
+
+    }
+
+    if(
+        secondaryAdminUsers().length >= 3
+    ){
+
+        toast(
+            "Adminlar soni 3 tagacha bo‘lishi kerak."
+        );
+
+        return;
+
+    }
+
+    const full_name =
+        document
+        .getElementById("teacherName")
+        .value
+        .trim();
+
+    const birth =
+        document
+        .getElementById("teacherBirth")
+        .value;
+
+    const jshshir =
+        document
+        .getElementById("teacherJshshir")
+        .value
+        .trim();
+
+    const phone =
+        document
+        .getElementById("teacherPhone")
+        .value
+        .trim();
+
+    const username =
+        document
+        .getElementById("teacherUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("teacherPassword")
+        .value;
+
+    if(
+        !full_name ||
+        !birth ||
+        !jshshir ||
+        !phone ||
+        !username ||
+        !password
+    ){
+
+        toast(
+            "Barcha maydonlarni to‘ldiring."
+        );
+
+        return;
+
+    }
+
+    if(
+        !/^\d{14}$/.test(jshshir)
+    ){
+
+        toast(
+            "JShShIR aynan 14 ta raqamdan iborat bo‘lishi kerak."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u =>
+            String(u.username).toLowerCase()
+            === username.toLowerCase()
+        )
+    ){
+
+        toast(
+            "Bu login allaqachon band."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u => String(u.phone) === phone
+        )
+    ){
+
+        toast(
+            "Bu telefon raqam allaqachon band."
+        );
+
+        return;
+
+    }
+
+    if(
+        users.some(
+            u => u.jshshir === jshshir
+        )
+    ){
+
+        toast(
+            "Bu JShShIR allaqachon mavjud."
+        );
+
+        return;
+
+    }
+
+    const teacher = {
+
+        id:Date.now(),
+
+        role:"teacher",
+
+        isMain:false,
+
+        isAdmin:true,
+
+        full_name,
+
+        birth,
+
+        jshshir,
+
+        phone,
+
+        username,
+
+        password,
+
+        coins:0
+
+    };
+
+    users.push(teacher);
+
+    saveData();
+
+    showCredentials(
+        "O‘qituvchi yaratildi",
+        teacher
+    );
+
+    renderTeachers();
+
+}
+
+/* ==================================================
+   SUBJECTS
+================================================== */
+
+function renderSubjects(){
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Fanlar",
+            "Fanlarni o‘qituvchilarga biriktiring"
+        )}
+
+        <div class="panel">
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        Fan nomi
+                    </label>
+
+                    <input
+                        id="subjectName"
+                        placeholder="Masalan: Matematika"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        O‘qituvchi
+                    </label>
+
+                    <select id="subjectTeacher">
+
+                        <option value="">
+                            O‘qituvchi tanlang
+                        </option>
+
+                        ${
+                            regularTeachers()
+                            .map(
+                                t => `
+
+                                    <option
+                                        value="${t.id}"
+                                    >
+                                        ${escapeHtml(
+                                            t.full_name
+                                        )}
+                                    </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addSubject()"
+                    >
+                        Fan qo‘shish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Fan</th>
+                            <th>O‘qituvchi</th>
+                            <th></th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            subjects.length
+
+                            ?
+
+                            subjects.map(
+                                s => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                getTeacherName(
+                                                    s.teacherId
+                                                )
+                                            )}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="danger"
+                                                onclick="deleteSubject(${s.id})"
+                                            >
+                                                O‘chirish
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                `
+                            ).join("")
+
+                            :
+
+                            `
+
+                                <tr>
+
+                                    <td
+                                        colspan="3"
+                                        class="empty"
+                                    >
+                                        Fanlar yo‘q
+                                    </td>
+
+                                </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addSubject(){
+
+    const name =
+        document
+        .getElementById("subjectName")
+        .value
+        .trim();
+
+    const teacherId =
+        Number(
+            document
+            .getElementById("subjectTeacher")
+            .value
+        );
+
+    if(!name || !teacherId){
+
+        toast(
+            "Fan va o‘qituvchini tanlang."
+        );
+
+        return;
+
+    }
+
+    subjects.push({
+
+        id:Date.now(),
+
+        name,
+
+        teacherId
+
+    });
+
+    saveData();
+
+    render();
+
+    toast(
+        "Fan qo‘shildi."
+    );
+
+}
+
+function deleteSubject(id){
+
+    subjects =
+        subjects.filter(
+            s => s.id !== id
+        );
+
+    saveData();
+
+    render();
+
+}
+
+/* ==================================================
+   GRADES
+================================================== */
+
+function renderGrades(){
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Baholar",
+            "Baholar avtomatik ravishda coin bermaydi"
+        )}
+
+        <div class="panel">
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        O‘quvchi
+                    </label>
+
+                    <select id="gradeStudent">
+
+                        <option value="">
+                            O‘quvchi tanlang
+                        </option>
+
+                        ${
+                            students()
+                            .map(
+                                s => `
+
+                                    <option
+                                        value="${s.id}"
+                                    >
+                                        ${escapeHtml(
+                                            s.full_name
+                                        )}
+                                    </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Fan
+                    </label>
+
+                    <select id="gradeSubject">
+
+                        <option value="">
+                            Fan tanlang
+                        </option>
+
+                        ${
+                            subjects
+                            .map(
+                                s => `
+
+                                    <option
+                                        value="${s.id}"
+                                    >
+                                        ${escapeHtml(
+                                            s.name
+                                        )}
+                                    </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Baho
+                    </label>
+
+                    <input
+                        id="gradeValue"
+                        type="number"
+                        min="1"
+                        max="100"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Izoh
+                    </label>
+
+                    <input
+                        id="gradeComment"
+                        placeholder="Izoh"
+                    >
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addGrade()"
+                    >
+                        Baho qo‘yish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>O‘quvchi</th>
+                            <th>Fan</th>
+                            <th>Baho</th>
+                            <th>Izoh</th>
+                            <th>Sana</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            grades.length
+
+                            ?
+
+                            grades
+                            .slice()
+                            .reverse()
+                            .map(g=>{
+
+                                const student =
+                                    users.find(
+                                        u =>
+                                        u.id ===
+                                        g.studentId
+                                    );
+
+                                const subject =
+                                    subjects.find(
+                                        s =>
+                                        s.id ===
+                                        g.subjectId
+                                    );
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+                                            ${
+                                                student
+                                                ?
+                                                escapeHtml(
+                                                    student.full_name
+                                                )
+                                                :
+                                                "-"
+                                            }
+                                        </td>
+
+                                        <td>
+                                            ${
+                                                subject
+                                                ?
+                                                escapeHtml(
+                                                    subject.name
+                                                )
+                                                :
+                                                "-"
+                                            }
+                                        </td>
+
+                                        <td>
+                                            <strong>
+                                                ${g.value}
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.comment || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.date || "-"
+                                            )}
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            })
+                            .join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+                                    Baholar yo‘q
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addGrade(){
+
+    const studentId =
+        Number(
+            document
+            .getElementById("gradeStudent")
+            .value
+        );
+
+    const subjectId =
+        Number(
+            document
+            .getElementById("gradeSubject")
+            .value
+        );
+
+    const value =
+        Number(
+            document
+            .getElementById("gradeValue")
+            .value
+        );
+
+    const comment =
+        document
+        .getElementById("gradeComment")
+        .value
+        .trim();
+
+    if(
+        !studentId ||
+        !subjectId ||
+        !value
+    ){
+
+        toast(
+            "O‘quvchi, fan va bahoni kiriting."
+        );
+
+        return;
+
+    }
+
+    if(
+        value < 1 ||
+        value > 100
+    ){
+
+        toast(
+            "Baho 1 dan 100 gacha bo‘lishi kerak."
+        );
+
+        return;
+
+    }
+
+    grades.push({
+
+        id:Date.now(),
+
+        studentId,
+
+        subjectId,
+
+        value,
+
+        comment,
+
+        date:
+            new Date()
+            .toLocaleDateString("uz-UZ")
+
+    });
+
+    saveData();
+
+    render();
+
+    toast(
+        "Baho saqlandi."
+    );
+
+}
+
+/* ==================================================
+   COINS
+================================================== */
+
+function renderCoins(){
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Coin berish",
+            "Coinni o‘qituvchi qo‘lda belgilaydi"
+        )}
+
+        <div class="panel">
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        O‘quvchi
+                    </label>
+
+                    <select id="coinStudent">
+
+                        <option value="">
+                            O‘quvchi tanlang
+                        </option>
+
+                        ${
+                            students()
+                            .map(
+                                s => `
+
+                                    <option
+                                        value="${s.id}"
+                                    >
+                                        ${escapeHtml(
+                                            s.full_name
+                                        )}
+                                        — ${s.coins} coin
+                                    </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Coin miqdori
+                    </label>
+
+                    <input
+                        id="coinAmount"
+                        type="number"
+                        min="1"
+                        placeholder="Masalan: 100"
+                    >
+
+                </div>
+
+                <div class="field full">
+
+                    <label>
+                        Sabab
+                    </label>
+
+                    <input
+                        id="coinReason"
+                        placeholder="Masalan: yaxshi natija"
+                    >
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addCoins()"
+                    >
+                        Coin berish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>O‘quvchi</th>
+                            <th>Guruh</th>
+                            <th>Coin</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            students()
+                            .map(
+                                s => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.full_name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                groupName(
+                                                    s.groupId
+                                                )
+                                            )}
+                                        </td>
+
+                                        <td class="coin">
+                                            🪙 ${s.coins}
+                                        </td>
+
+                                    </tr>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addCoins(){
+
+    if(
+        !currentUser ||
+        currentUser.isMain !== true
+    ){
+
+        toast(
+            "Faqat bosh admin coin bera oladi."
+        );
+
+        return;
+
+    }
+
+    const studentId =
+        Number(
+            document
+            .getElementById("coinStudent")
+            .value
+        );
+
+    const amount =
+        Number(
+            document
+            .getElementById("coinAmount")
+            .value
+        );
+
+    const reason =
+        document
+        .getElementById("coinReason")
+        .value
+        .trim();
+
+    if(
+        !studentId ||
+        amount <= 0
+    ){
+
+        toast(
+            "O‘quvchi va coin miqdorini kiriting."
+        );
+
+        return;
+
+    }
+
+    const student =
+        users.find(
+            u => u.id === studentId
+        );
+
+    if(!student){
+        return;
+    }
+
+    student.coins =
+        Number(student.coins || 0)
+        + amount;
+
+    saveData();
+
+    render();
+
+    toast(
+        `${amount} coin berildi.\nSabab: ${
+            reason || "Ko‘rsatilmagan"
+        }`
+    );
+
+}
+
+/* ==================================================
+   ATTENDANCE
+================================================== */
+
+function renderAttendance(){
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Davomat",
+            "O‘quvchilarning davomatini belgilang"
+        )}
+
+        <div class="panel">
+
+            <div class="form-grid">
+
+                <div class="field">
+
+                    <label>
+                        O‘quvchi
+                    </label>
+
+                    <select id="attStudent">
+
+                        <option value="">
+                            O‘quvchi tanlang
+                        </option>
+
+                        ${
+                            students()
+                            .map(
+                                s => `
+
+                                    <option
+                                        value="${s.id}"
+                                    >
+                                        ${escapeHtml(
+                                            s.full_name
+                                        )}
+                                    </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Sana
+                    </label>
+
+                    <input
+                        id="attDate"
+                        type="date"
+                        value="${
+                            new Date()
+                            .toISOString()
+                            .slice(0,10)
+                        }"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Holat
+                    </label>
+
+                    <select id="attStatus">
+
+                        <option value="present">
+                            Kelgan
+                        </option>
+
+                        <option value="absent">
+                            Kelmagan
+                        </option>
+
+                        <option value="late">
+                            Kechikkan
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary"
+                        onclick="addAttendance()"
+                    >
+                        Saqlash
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>O‘quvchi</th>
+                            <th>Sana</th>
+                            <th>Holat</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            attendance
+                            .slice()
+                            .reverse()
+                            .map(a=>{
+
+                                const student =
+                                    users.find(
+                                        u =>
+                                        u.id ===
+                                        a.studentId
+                                    );
+
+                                const label =
+                                    a.status ===
+                                    "present"
+                                    ?
+                                    "Kelgan"
+                                    :
+                                    a.status ===
+                                    "absent"
+                                    ?
+                                    "Kelmagan"
+                                    :
+                                    "Kechikkan";
+
+                                const cls =
+                                    a.status ===
+                                    "present"
+                                    ?
+                                    "status-present"
+                                    :
+                                    a.status ===
+                                    "absent"
+                                    ?
+                                    "status-absent"
+                                    :
+                                    "status-late";
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+                                            ${
+                                                student
+                                                ?
+                                                escapeHtml(
+                                                    student.full_name
+                                                )
+                                                :
+                                                "-"
+                                            }
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                a.date
+                                            )}
+                                        </td>
+
+                                        <td class="${cls}">
+                                            ${label}
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            })
+                            .join("")
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function addAttendance(){
+
+    const studentId =
+        Number(
+            document
+            .getElementById("attStudent")
+            .value
+        );
+
+    const date =
+        document
+        .getElementById("attDate")
+        .value;
+
+    const status =
+        document
+        .getElementById("attStatus")
+        .value;
+
+    if(
+        !studentId ||
+        !date
+    ){
+
+        toast(
+            "O‘quvchi va sanani tanlang."
+        );
+
+        return;
+
+    }
+
+    attendance.push({
+
+        id:Date.now(),
+
+        studentId,
+
+        date,
+
+        status
+
+    });
+
+    saveData();
+
+    render();
+
+    toast(
+        "Davomat saqlandi."
+    );
+
+}
+
+/* ==================================================
+   NOTICES
+================================================== */
+
+function renderNotices(){
+
+    const canManageNotices = Boolean(
+        currentUser && currentUser.isMain
+    );
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "E'lonlar",
+            canManageNotices
+                ? "Muhim xabarlarni joylashtiring"
+                : "Yangiliklar va bildirishnomalar"
+        )}
+
+        ${
+            canManageNotices
+            ? `
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="field full">
+
+                            <label>
+                                Sarlavha
+                            </label>
+
+                            <input
+                                id="noticeTitle"
+                                placeholder="E'lon sarlavhasi"
+                            >
+
+                        </div>
+
+                        <div class="field full">
+
+                            <label>
+                                Xabar
+                            </label>
+
+                            <input
+                                id="noticeText"
+                                placeholder="Xabar"
+                            >
+
+                        </div>
+
+                        <div class="form-actions">
+
+                            <button
+                                class="primary"
+                                onclick="addNotice()"
+                            >
+                                E'lon qo‘shish
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                ` : ""}
+
+                ${createTeacherPanel}
+        }
+
+        <div class="panel">
+
+            ${
+                notices.length
+
+                ?
+
+                notices
+                .slice()
+                .reverse()
+                .map(
+                    n => `
+
+                        <div class="achievement">
+
+                            <div class="achievement-icon">
+                                📢
+                            </div>
+
+                            <div style="flex:1;">
+
+                                <strong>
+                                    ${escapeHtml(
+                                        n.title
+                                    )}
+                                </strong>
+
+                                <div
+                                    style="
+                                        margin-top:5px;
+                                        color:#94a3b8;
+                                    "
+                                >
+                                    ${escapeHtml(
+                                        n.text
+                                    )}
+                                </div>
+
+                                <div
+                                    style="
+                                        margin-top:5px;
+                                        color:#708096;
+                                        font-size:12px;
+                                    "
+                                >
+                                    ${escapeHtml(
+                                        n.date
+                                    )}
+                                </div>
+
+                            </div>
+
+                            ${
+                                canManageNotices
+                                ? `<button class="danger" style="margin-left:12px;" onclick="deleteNotice(${n.id})">O‘chirish</button>`
+                                : ""
+                            }
+
+                        </div>
+
+                    `
+                )
+                .join("")
+
+                :
+
+                `
+                    <div class="empty">
+                        E'lonlar yo‘q
+                    </div>
+                `
+            }
+
+        </div>
+
+    `;
+
+}
+
+function addNotice(){
+
+    const title =
+        document
+        .getElementById("noticeTitle")
+        .value
+        .trim();
+
+    const text =
+        document
+        .getElementById("noticeText")
+        .value
+        .trim();
+
+    if(
+        !title ||
+        !text
+    ){
+
+        toast(
+            "Sarlavha va xabarni kiriting."
+        );
+
+        return;
+
+    }
+
+    notices.push({
+
+        id:Date.now(),
+
+        title,
+
+        text,
+
+        date:
+            new Date()
+            .toLocaleDateString("uz-UZ")
+
+    });
+
+    saveData();
+
+    render();
+
+}
+
+function deleteNotice(id){
+
+    if(!currentUser || !currentUser.isMain){
+        toast("Faqat bosh admin e'lonni o‘chira oladi.");
+        return;
+    }
+
+    if(!confirm("Bu e'lonni o‘chirishni tasdiqlaysizmi?")){
+        return;
+    }
+
+    notices = notices.filter(item => item.id !== id);
+    saveData();
+    render();
+
+}
+
+/* O‘quvchi qo‘shish formasini mavjud funksiyalarga tegmasdan boshqaradi. */
+const originalRenderStudents = renderStudents;
+
+function openStudentCreatePanel(){
+
+    const panel =
+        document.querySelector(
+            ".student-create-panel"
+        );
+
+    if(panel){
+        panel.classList.add("is-open");
+    }
+
+}
+
+function closeStudentCreatePanel(){
+
+    const panel =
+        document.querySelector(
+            ".student-create-panel"
+        );
+
+    if(panel){
+        panel.classList.remove("is-open");
+    }
+
+}
+
+renderStudents = function(){
+
+    originalRenderStudents();
+
+    const content =
+        document.getElementById("content");
+
+    const panels =
+        content.querySelectorAll(".panel");
+
+    const createPanel = panels[0];
+    const title = content.querySelector(".page-title");
+
+    if(!createPanel || !title){
+        return;
+    }
+
+    createPanel.classList.add("student-create-panel");
+
+    const panelHead =
+        createPanel.querySelector(".panel-head");
+
+    if(panelHead){
+        panelHead.insertAdjacentHTML(
+            "beforeend",
+            `<button class="student-create-close" type="button" title="Yopish" onclick="closeStudentCreatePanel()">&times;</button>`
+        );
+    }
+
+    title.insertAdjacentHTML(
+        "afterend",
+        `<button class="student-add-icon" type="button" title="O‘quvchi qo‘shish" aria-label="O‘quvchi qo‘shish" onclick="openStudentCreatePanel()">+</button>`
+    );
+
+};
+
+/* ==================================================
+   STUDENT DASHBOARD
+================================================== */
+
+function renderStudentDashboard(){
+
+    const s =
+        currentUser;
+
+    const myGrades =
+        grades.filter(
+            g =>
+            g.studentId === s.id
+        );
+
+    const average =
+        myGrades.length
+
+        ?
+
+        (
+            myGrades.reduce(
+                (sum,g) =>
+                sum + Number(g.value),
+                0
+            )
+            /
+            myGrades.length
+        ).toFixed(1)
+
+        :
+
+        0;
+
+    const sorted =
+        students()
+        .slice()
+        .sort(
+            (a,b) =>
+            Number(b.coins) -
+            Number(a.coins)
+        );
+
+    const rank =
+        sorted.findIndex(
+            x => x.id === s.id
+        ) + 1;
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Mening dashboardim",
+            `Xush kelibsiz, ${
+                escapeHtml(
+                    s.full_name
+                )
+            }`
+        )}
+
+        <div class="student-hero">
+
+            <div class="panel">
+
+                <div class="profile-box">
+
+                    <div class="avatar">
+
+                        ${escapeHtml(
+                            s.full_name
+                            .charAt(0)
+                            .toUpperCase()
+                        )}
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            ${escapeHtml(
+                                s.full_name
+                            )}
+                        </h2>
+
+                        <div
+                            style="
+                                color:#8f9db4;
+                                margin-top:6px;
+                            "
+                        >
+                            ${escapeHtml(
+                                groupName(
+                                    s.groupId
+                                )
+                            )}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel coin-box">
+
+                <div class="card-title">
+                    Coin
+                </div>
+
+                <div class="coin-value">
+                    🪙 ${s.coins}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-title">
+                    Baholar
+                </div>
+
+                <div class="card-value">
+                    ${myGrades.length}
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    O‘rtacha baho
+                </div>
+
+                <div class="card-value">
+                    ${average}
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Reyting
+                </div>
+
+                <div class="card-value">
+                    #${rank || "-"}
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Guruh
+                </div>
+
+                <div
+                    class="card-value"
+                    style="font-size:20px"
+                >
+                    ${escapeHtml(
+                        groupName(
+                            s.groupId
+                        )
+                    )}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Yutuqlar
+            </div>
+
+            <div class="achievement">
+
+                <div class="achievement-icon">
+                    🏆
+                </div>
+
+                <div>
+
+                    <strong>
+                        Birinchi qadam
+                    </strong>
+
+                    <div
+                        style="
+                            color:#8998ae;
+                            margin-top:5px;
+                        "
+                    >
+                        Coverse'dan foydalanishni boshladingiz
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="achievement">
+
+                <div class="achievement-icon">
+                    🪙
+                </div>
+
+                <div>
+
+                    <strong>
+                        Coin yig‘uvchi
+                    </strong>
+
+                    <div
+                        style="
+                            color:#8998ae;
+                            margin-top:5px;
+                        "
+                    >
+                        Sizda ${s.coins} coin mavjud
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+/* ==================================================
+   STUDENT PROFILE
+================================================== */
+
+function renderAiChat(){
+
+    const messages = aiChatHistory.length
+        ? aiChatHistory
+        : [
+            {
+                role:"assistant",
+                text:"Salom! Men platforma AI yordami bo‘laman. Savolingizni yozing."
+            }
+        ];
+
+    document.getElementById("content").innerHTML = `
+
+        ${pageHeader(
+            "AI Chat",
+            "Platformada tezkor yordam"
+        )}
+
+        <div class="panel">
+
+            <div class="form-grid" style="margin-bottom:14px;">
+                <div class="field" style="grid-column:1 / -1;">
+                    <label>OpenRouter API key</label>
+                    <input id="aiApiKeyInput" type="password" value="${escapeHtml(localStorage.getItem("coverse_ai_api_key") || "")}" placeholder="sk-or-...">
+                </div>
+
+                <div class="form-actions" style="grid-column:1 / -1;">
+                    <button class="primary" onclick="saveAiApiKey()">API keyni saqlash</button>
+                    <button class="secondary" onclick="clearAiChat()">Chatni tozalash</button>
+                </div>
+            </div>
+
+            <div class="chat-box" id="aiChatBox" style="display:flex; flex-direction:column; gap:12px; max-height:480px; overflow:auto; padding:8px 4px;">
+
+                ${messages.map(msg => `
+                    <div class="chat-message ${msg.role === "user" ? "chat-user" : "chat-assistant"}" style="max-width:80%; padding:12px 14px; border-radius:16px; line-height:1.6; ${msg.role === "user" ? "margin-left:auto; background:#5f88ff; color:#fff;" : "margin-right:auto; background:#f2f5fb; color:#1d2735; border:1px solid rgba(17,24,39,0.08);"}">
+                        ${escapeHtml(msg.text)}
+                    </div>
+                `).join("")}
+
+            </div>
+
+            <div class="form-grid" style="margin-top:16px;">
+                <div class="field" style="grid-column:1 / -1;">
+                    <label>Savol yoki buyruq</label>
+                    <textarea id="aiChatInput" rows="3" placeholder="Masalan: Davomatni qanday ko‘rishim mumkin?"></textarea>
+                </div>
+
+                <div class="form-actions" style="grid-column:1 / -1;">
+                    <button class="primary" onclick="sendAiMessage()">Yuborish</button>
+                </div>
+            </div>
+
+        </div>
+
+    `;
+
+    const box = document.getElementById("aiChatBox");
+    if(box){
+        box.scrollTop = box.scrollHeight;
+    }
+
+}
+
+async function sendAiMessage(){
+
+    const input = document.getElementById("aiChatInput");
+    const message = input.value.trim();
+
+    if(!message){
+        toast("Savolni yozing.");
+        return;
+    }
+
+    aiChatHistory.push({ role:"user", text:message });
+    saveAiChatHistory();
+
+    const assistantMessage = { role:"assistant", text:"Yuborilmoqda..." };
+    aiChatHistory.push(assistantMessage);
+    saveAiChatHistory();
+
+    renderAiChat();
+
+    const reply = await getAiReply(message);
+
+    aiChatHistory = aiChatHistory.filter(item => item !== assistantMessage);
+    aiChatHistory.push({ role:"assistant", text:reply });
+    saveAiChatHistory();
+
+    renderAiChat();
+    input.value = "";
+
+}
+
+function saveAiApiKey(){
+
+    const input = document.getElementById("aiApiKeyInput");
+    const key = input ? input.value.trim() : "";
+
+    if(key){
+        localStorage.setItem("coverse_ai_api_key", key);
+        toast("API key saqlandi.");
+    }else{
+        localStorage.removeItem("coverse_ai_api_key");
+        toast("API key o‘chirildi. Lokal fallback ishlaydi.");
+    }
+
+}
+
+function clearAiChat(){
+
+    aiChatHistory = [];
+    saveAiChatHistory();
+    renderAiChat();
+
+}
+
+function renderStudentProfile(){
+
+    const s =
+        currentUser;
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Profil",
+            "Shaxsiy ma'lumotlaringiz"
+        )}
+
+        <div class="panel">
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    F.I.Sh.
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        s.full_name
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    Tug‘ilgan sana
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        s.birth || "-"
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    JShShIR
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        s.jshshir || "-"
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    Telefon
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        s.phone
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    Login
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        s.username
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    Guruh
+                </span>
+
+                <strong>
+                    ${escapeHtml(
+                        groupName(
+                            s.groupId
+                        )
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="credential-row">
+
+                <span class="credential-label">
+                    Coin
+                </span>
+
+                <strong class="coin">
+                    🪙 ${s.coins}
+                </strong>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>Yangi login</label>
+                    <input
+                        id="profileUsername"
+                        value="${escapeHtml(s.username)}"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Yangi parol</label>
+                    <input
+                        id="profilePassword"
+                        type="password"
+                        placeholder="Yangi parol"
+                    >
+                </div>
+
+                <div class="form-actions">
+                    <button
+                        class="primary"
+                        onclick="changeOwnCredentials()"
+                    >
+                        Login va parolni saqlash
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+/* ==================================================
+   STUDENT GRADES
+================================================== */
+
+function renderStudentGrades(){
+
+    const data =
+        grades.filter(
+            g =>
+            g.studentId ===
+            currentUser.id
+        );
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Baholarim",
+            "Barcha baholaringiz"
+        )}
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Fan</th>
+                            <th>Baho</th>
+                            <th>Izoh</th>
+                            <th>Sana</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            data.length
+
+                            ?
+
+                            data.map(g=>{
+
+                                const subject =
+                                    subjects.find(
+                                        s =>
+                                        s.id ===
+                                        g.subjectId
+                                    );
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+                                            ${
+                                                subject
+                                                ?
+                                                escapeHtml(
+                                                    subject.name
+                                                )
+                                                :
+                                                "-"
+                                            }
+                                        </td>
+
+                                        <td>
+                                            <strong>
+                                                ${g.value}
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.comment || "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                g.date || "-"
+                                            )}
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            }).join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="empty"
+                                >
+                                    Hozircha baholar yo‘q
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+/* ==================================================
+   STUDENT ATTENDANCE
+================================================== */
+
+function renderStudentAttendance(){
+
+    const data =
+        attendance.filter(
+            a =>
+            a.studentId ===
+            currentUser.id
+        );
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Davomatim",
+            "Sizning davomat holatingiz"
+        )}
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Sana</th>
+                            <th>Holat</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            data.length
+
+                            ?
+
+                            data.map(a=>{
+
+                                const label =
+                                    a.status ===
+                                    "present"
+                                    ?
+                                    "Kelgan"
+                                    :
+                                    a.status ===
+                                    "absent"
+                                    ?
+                                    "Kelmagan"
+                                    :
+                                    "Kechikkan";
+
+                                const cls =
+                                    a.status ===
+                                    "present"
+                                    ?
+                                    "status-present"
+                                    :
+                                    a.status ===
+                                    "absent"
+                                    ?
+                                    "status-absent"
+                                    :
+                                    "status-late";
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                a.date
+                                            )}
+                                        </td>
+
+                                        <td class="${cls}">
+                                            ${label}
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            }).join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="2"
+                                    class="empty"
+                                >
+                                    Davomat ma'lumoti yo‘q
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+/* ==================================================
+   RANKING
+================================================== */
+
+function renderRanking(){
+
+    const sorted =
+        students()
+        .slice()
+        .sort(
+            (a,b)=>
+            Number(b.coins) -
+            Number(a.coins)
+        );
+
+    document
+        .getElementById("content")
+        .innerHTML = `
+
+        ${pageHeader(
+            "Reyting",
+            "Coin bo‘yicha o‘quvchilar reytingi"
+        )}
+
+        <div class="panel">
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>O‘rin</th>
+                            <th>O‘quvchi</th>
+                            <th>Guruh</th>
+                            <th>Coin</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            sorted.length
+
+                            ?
+
+                            sorted.map(
+                                (s,index)=>`
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>
+                                                #${index+1}
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                s.full_name
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHtml(
+                                                groupName(
+                                                    s.groupId
+                                                )
+                                            )}
+                                        </td>
+
+                                        <td class="coin">
+                                            🪙 ${s.coins}
+                                        </td>
+
+                                    </tr>
+
+                                `
+                            ).join("")
+
+                            :
+
+                            `
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="empty"
+                                >
+                                    Reyting bo‘sh
+                                </td>
+
+                            </tr>
+
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function changeOwnCredentials(){
+
+    if(!currentUser){
+        return;
+    }
+
+    const username =
+        document
+        .getElementById("profileUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("profilePassword")
+        .value;
+
+    if(!username || !password){
+        toast("Login va parolni to‘ldiring.");
+        return;
+    }
+
+    if(users.some(user =>
+        user.id !== currentUser.id &&
+        String(user.username).toLowerCase() === username.toLowerCase()
+    )){
+        toast("Bu login band.");
+        return;
+    }
+
+    currentUser.username = username;
+    currentUser.password = password;
+    saveData();
+    toast("Login va parol yangilandi.");
+    renderStudentProfile();
+
+}
+
+/* ==================================================
+   CREDENTIALS MODAL
+================================================== */
+
+function showCredentials(title,user){
+
+    const canViewPasswords = Boolean(
+        currentUser &&
+        (
+            currentUser.isMain ||
+            currentUser.id === user.id
+        )
+    );
+
+    document
+        .getElementById("modalTitle")
+        .textContent = title;
+
+    document
+        .getElementById("modalBody")
+        .innerHTML = `
+
+            <div class="credentials">
+
+                <div class="credential-row">
+
+                    <span class="credential-label">
+                        F.I.Sh.
+                    </span>
+
+                    <strong>
+                        ${escapeHtml(
+                            user.full_name
+                        )}
+                    </strong>
+
+                </div>
+
+                ${
+                    user.birth
+
+                    ?
+
+                    `
+
+                    <div class="credential-row">
+
+                        <span class="credential-label">
+                            Tug‘ilgan sana
+                        </span>
+
+                        <strong>
+                            ${escapeHtml(
+                                user.birth
+                            )}
+                        </strong>
+
+                    </div>
+
+                    `
+
+                    :
+
+                    ""
+                }
+
+                ${
+                    user.jshshir
+
+                    ?
+
+                    `
+
+                    <div class="credential-row">
+
+                        <span class="credential-label">
+                            JShShIR
+                        </span>
+
+                        <strong>
+                            ${escapeHtml(
+                                user.jshshir
+                            )}
+                        </strong>
+
+                    </div>
+
+                    `
+
+                    :
+
+                    ""
+                }
+
+                <div class="credential-row">
+
+                    <span class="credential-label">
+                        Telefon
+                    </span>
+
+                    <strong>
+                        ${escapeHtml(
+                            user.phone
+                        )}
+                    </strong>
+
+                </div>
+
+                <div class="credential-row">
+
+                    <span class="credential-label">
+                        Login
+                    </span>
+
+                    <strong>
+                        ${escapeHtml(
+                            user.username
+                        )}
+                    </strong>
+
+                </div>
+
+                <div class="credential-row">
+
+                    <span class="credential-label">
+                        Parol
+                    </span>
+
+                    <strong>
+                        ${canViewPasswords
+                            ? escapeHtml(user.password || "-")
+                            : "••••••••"}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        `;
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+/* ==================================================
+   THEME
+================================================== */
+
+function updateDeviceMode(){
+
+    const badge =
+        document.getElementById("deviceModeBadge");
+
+    if(!badge){
+        return;
+    }
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const path =
+        window.location.pathname.toLowerCase();
+
+    const requested =
+        params.get("device") ||
+        (
+            path.includes("/app/mobile") || path.includes("/mobile")
+            ? "mobile"
+            : path.includes("/app/tablet") || path.includes("/tablet")
+                ? "tablet"
+                : path.includes("/app/desktop") || path.includes("/desktop")
+                    ? "desktop"
+                    : null
+        );
+
+    const mode = requested
+        ? requested.charAt(0).toUpperCase() + requested.slice(1)
+        : (
+            window.innerWidth < 650
+            ? "Mobile"
+            : window.innerWidth < 900
+                ? "Tablet"
+                : "Desktop"
+        );
+
+    badge.textContent = mode;
+}
+
+function toggleTheme(){
+
+    document
+        .body
+        .classList
+        .toggle("light");
+
+    localStorage.setItem(
+
+        THEME_KEY,
+
+        document
+        .body
+        .classList
+        .contains("light")
+        ? "light"
+        : "dark"
+
+    );
+
+}
+
+/* ==================================================
+   FULLSCREEN
+================================================== */
+
+function toggleFullscreen(){
+
+    if(
+        !document.fullscreenElement
+    ){
+
+        document
+            .documentElement
+            .requestFullscreen()
+            .catch(
+                ()=>{}
+            );
+
+    }else{
+
+        document.exitFullscreen();
+
+    }
+
+}
+
+/* ==================================================
+   ENTER KEY
+================================================== */
+
+window.addEventListener("resize", updateDeviceMode);
+
+window.addEventListener("load", updateDeviceMode);
+
+document
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(
+                e.key === "Enter" &&
+                !currentUser
+            ){
+
+                login();
+
+            }
+
+            if(
+                e.key === "Escape"
+            ){
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+/* ==================================================
+   INIT
+================================================== */
+
+function init(){
+
+    apiRequest("/api/logout", {
+        method:"POST"
+    });
+
+    loadData();
+
+    renderPublicEntries();
+
+    const theme =
+        localStorage.getItem(
+            THEME_KEY
+        );
+
+    if(
+        theme === "light"
+    ){
+
+        document
+            .body
+            .classList
+            .add("light");
+
+    }
+
+}
+
+init();
+
+startAutosave();
+
+</script>
+
+</body>
+</html>

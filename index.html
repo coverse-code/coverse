@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coverse | Platforma</title>
+  <meta name="description" content="Coverse — ta'lim va boshqaruv funksiyalari bilan yaratilgan professional platforma." />
+  <style>
+    :root {
+      --bg: #06131f;
+      --bg-2: #0d1d31;
+      --panel: rgba(10, 22, 36, 0.9);
+      --card: rgba(17, 31, 49, 0.9);
+      --line: rgba(151, 177, 255, 0.18);
+      --text: #edf4ff;
+      --muted: #bfd0ee;
+      --primary: #6ea1ff;
+      --primary-2: #8eb4ff;
+      --accent: #7ef0c2;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, var(--bg), var(--bg-2));
+      color: var(--text);
+    }
+
+    .shell {
+      width: min(1000px, 92vw);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 28px 80px var(--shadow);
+      padding: 32px 34px;
+      backdrop-filter: blur(5px);
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--primary-2);
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 12px 26px rgba(110, 161, 255, 0.32);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.3rem, 6vw, 4.2rem);
+      line-height: 1.08;
+    }
+
+    .lead {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(130px, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px 22px;
+    }
+
+    .panel h3 {
+      margin: 0 0 18px;
+      font-size: 1.22rem;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .device-card {
+      display: block;
+      text-decoration: none;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 14px;
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+
+    .device-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(126, 240, 194, 0.6);
+      box-shadow: 0 14px 26px rgba(0,0,0,0.18);
+    }
+
+    .device-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .device-card span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    @media (max-width: 760px) {
+      .shell { padding: 22px 18px; }
+      .hero { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .device-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top">
+      <div class="brand">Coverse<span>.</span></div>
+      <a class="btn" href="/app">Platformaga kirish</a>
+    </div>
+
+    <div class="hero">
+      <div>
+        <h1>Ta’lim va boshqaruvni bir joyda</h1>
+        <p class="lead">
+          Guruhlar, talaba ma’lumotlari, davomat, baholar, fanlar, e’lonlar va AI yordami birlashtirilgan professional tizim.
+        </p>
+
+        <div class="actions">
+          <a class="btn" href="/app">Boshlash</a>
+          <a class="btn secondary" href="/about">Batafsil</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>6+</strong>
+            <span>asosiy bo'lim</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>ishga tayyor</span>
+          </div>
+          <div class="stat">
+            <strong>AI</strong>
+            <span>yordamchi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Asosiy funksiyalar</h3>
+        <ul>
+          <li>Guruhlar va talabalarning boshqaruvi</li>
+          <li>Fanlar, baholar va davomat</li>
+          <li>E'lonlar va umumiy xabarlar</li>
+          <li>Coin berish va rag'batlantirish</li>
+          <li>Admin va profil boshqaruvi</li>
+          <li>AI chat yordami</li>
+        </ul>
+
+        <div class="device-grid">
+          <a class="device-card" href="/app">
+            <strong>Kompyuter</strong>
+            <span>Desktop</span>
+          </a>
+          <a class="device-card" href="/app">
+            <strong>Tablet</strong>
+            <span>Tablet</span>
+          </a>
+          <a class="device-card" href="/app">
+            <strong>Mobil</strong>
+            <span>Mobile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

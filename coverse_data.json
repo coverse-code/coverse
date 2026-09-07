@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "coins": 0,
+      "full_name": "Bosh admin",
+      "id": 1,
+      "isMain": true,
+      "hiddenFromList": true,
+      "password": "hell7755",
+      "phone": "991072807",
+      "role": "teacher",
+      "username": "hell"
+    }
+  ],
+  "groups": [],
+  "subjects": [],
+  "grades": [],
+  "attendance": [],
+  "notices": [],
+  "publicEntries": []
+}

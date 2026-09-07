@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coverse | Biz haqimizda</title>
+  <style>
+    :root {
+      --bg: #06131f;
+      --bg-2: #0d1d31;
+      --panel: rgba(10, 22, 36, 0.9);
+      --line: rgba(151, 177, 255, 0.18);
+      --text: #edf4ff;
+      --muted: #bfd0ee;
+      --primary: #6ea1ff;
+      --primary-2: #8eb4ff;
+      --accent: #7ef0c2;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg), var(--bg-2));
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(820px, 90vw);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--primary-2);
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 18px 0 22px;
+    }
+
+    .item {
+      background: rgba(17, 31, 49, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: var(--muted);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Coverse</h1>
+    <p>
+      Coverse — ta’lim boshqaruv platformasi bo‘lib, o‘qituvchilar, o‘quvchilar, guruhlar,
+      fanlar, davomat, baholar va e’lonlarni yagona tizimda boshqarishga yordam beradi.
+    </p>
+    <p>
+      Platforma o‘quv jarayonini tezkor va qulay boshqarish uchun yaratilgan bo‘lib,
+      ma’lumotlarni saqlash, kuzatish va ko‘rsatish imkoniyatini beradi.
+    </p>
+
+    <div class="features">
+      <div class="item">Guruhlar boshqaruvi</div>
+      <div class="item">Davomat nazorati</div>
+      <div class="item">Baholar tizimi</div>
+      <div class="item">AI yordamchisi</div>
+    </div>
+
+    <a href="/app">Platformaga kirish</a>
+  </div>
+</body>
+</html>
