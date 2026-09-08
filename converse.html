@@ -1316,9 +1316,53 @@ const AUTOSAVE_INTERVAL_MS =
 
 const REMOTE_SAVE_DEBOUNCE_MS = 350;
 
+const IS_STATIC_SITE =
+    window.location.hostname.endsWith("github.io");
+
 let remoteSaveTimer = null;
 
 async function apiRequest(path, options = {}){
+
+    if(IS_STATIC_SITE){
+
+        const body = options.body
+            ? JSON.parse(options.body)
+            : null;
+
+        if(path === "/api/login"){
+
+            const response = await fetch("coverse_data.json");
+            const data = await response.json();
+            const user = data.users.find(item =>
+                String(item.phone).trim() === String(body.phone).trim() &&
+                String(item.username).trim().toLowerCase() === body.username &&
+                String(item.password) === body.password
+            );
+
+            return user
+                ? {ok: true, user}
+                : {ok: false};
+
+        }
+
+        if(path === "/api/public-data" || path === "/api/data"){
+
+            const saved = localStorage.getItem(SAVE_KEY);
+            const data = saved
+                ? JSON.parse(saved)
+                : await (await fetch("coverse_data.json")).json();
+
+            return {ok: true, data};
+
+        }
+
+        if(path === "/api/save"){
+            localStorage.setItem(SAVE_KEY, options.body);
+            return {ok: true};
+        }
+
+        return {ok: true};
+    }
 
     try{
 

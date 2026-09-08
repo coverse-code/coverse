@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (appLink) {
     appLink.addEventListener('click', (event) => {
       event.preventDefault();
-      window.location.href = '/app';
+      window.location.href = 'converse.html';
     });
   }
 });
